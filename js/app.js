@@ -15,7 +15,7 @@
 //      }
 //
 //      createClassNames(btnStyles)
-//      ==> 'btn btn_large btn-selected'
+//      ==> 'btn btn_large btn_active'
 // 
 //-------------------------------------
 
