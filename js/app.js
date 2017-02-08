@@ -19,9 +19,19 @@
 // 
 //-------------------------------------
 
-//YOUR CODE HERE
 
-function createClassNames(){
+// INPUT : Object
+function createClassNames(styleClassesObj){
+	var classNameStr = ''
+		
+	for(var propName in styleClassesObj  ){
+		var boolValueForClassNameProperty = styleClassesObj[propName]
+		if (boolValueForClassNameProperty === true){
+			classNameStr += " " + propName
+		}
+	}
+	return classNameStr
+	//OUTPUT : string (space separated)
 }
 
 
@@ -64,4 +74,24 @@ segment2Demo.className =  theClassNames
 //        
 //-------------------------------------
 
+var userProfilesContainerEl = document.querySelector('#user-profiles')
+var bigHtmlStr = ''
 
+forEach(userList, function(userObj, index, theArray){
+	console.log(userObj)
+	var classRulesObj = {
+		card: true,
+		'card_is-important': userObj.importantUser,
+		'card_is-felon': userObj.felonious
+	}
+	var classNamesForCard = createClassNames(classRulesObj)
+
+	var cardHtml =  '<div class="' + classNamesForCard +'">'
+	    cardHtml += 	 '<img src="'+ userObj.imgUrl+'" alt="...">'
+	    cardHtml += 	 '<h5>' + userObj.name +  '</h5>'
+		 cardHtml += '</div>'
+
+	bigHtmlStr += cardHtml
+})
+
+userProfilesContainerEl.innerHTML = bigHtmlStr 
